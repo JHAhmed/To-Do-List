@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block heading1 %}Create{% endblock %}{% block heading2 %} To-Do List{% endblock %}
+
+{% block content %}
+
+<form method="post" action="/create/">
+    {% csrf_token %}
+    {{form}}
+    <br>
+    <div class="d-grid gap-4 col-12 mx-auto">
+        <button class="btn btn-outline-light enter-button" type="submit", name="save" value="create-list">Create New</button>
+    </div>
+    
+</form>
+{% endblock %}

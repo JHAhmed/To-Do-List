@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block heading1 %}Home{% endblock %}
+{% block heading2 %}{% endblock %}
+
+
+
+{% block content %}
+
+    <form action="/home/", method="post">
+
+        {% csrf_token %}
+
+            {% for item in toDoList %}
+                
+            <div class="addNew">
+
+                <button class="btn btn-outline-light btn-lg view-list" type="submit", name="open", value="{{item.id}}">View {{item.name}}</button>
+                
+            </div>
+
+            
+            {% endfor %}
+
+
+    </form>
+{% endblock %}

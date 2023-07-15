@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+
+
+{% block heading1 %}{{toDoList.name}}{% endblock %}{% block heading2 %}{% endblock %}
+
+{% block content %}
+
+    <form action="#", method="post">
+        {% csrf_token %}
+
+            {% for item in toDoList.item_set.all %}
+                
+               
+                {% if item.complete == True %}
+
+                  <div class="input-group mb-3 item">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="clicked" name=c{{item.id}} checked >
+                    </div>
+                    <input type="text" class="form-control" value="{{item}}" name="t{{item.id}}">
+                  </div>
+                {% else %}
+                
+                
+                <div class="input-group mb-3 item">
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" value="clicked" name=c{{item.id}}>
+                    </div>
+                    <input type="text" class="form-control" value="{{item}}" name="t{{item.id}}">
+
+                  </div>
+                
+                {% endif %}
+
+            
+            {% endfor %}
+
+
+        <div class="addNew">
+
+            <button class="btn btn-outline-light" type="submit", name="save", value="save">Save</button>
+            <input type="text", name="new" class="input-field">
+            <button class="btn btn-outline-light" type="submit", name="newItem", value="newItem">Add Item</button>
+            
+        </div>
+    </form>
+{% endblock %}
